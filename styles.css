@@ -1,16 +1,34 @@
-.flex {
-  display: inline-flex;
+.parent {
+  border: 2px solid blue;
+  color: blue;
+  background: lightskyblue;
+  padding: 1rem;
 }
 
-.div-box {
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 5px;
-  margin: 10px;
+.child {
+  border: 2px dotted red;
+  color: red;
+  background: lightpink;
+  padding: 1rem;
+}
 
+/* Alignment styles */
+body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.abs {
+  position: absolute;
+  bottom: 0;
 }
