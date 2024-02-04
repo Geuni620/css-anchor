@@ -2,20 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CSS를 기초부터 다져보자!</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+    <script type="module">
+      if (!("anchorName" in document.documentElement.style)) {
+        import("https://unpkg.com/@oddbird/css-anchor-positioning");
+      }
+    </script>
   </head>
+  <style>
+    button {
+      width: 200px;
+      height: 200px;
+    }
+    [popover] {
+      inset: unset;
+
+      bottom: anchor(bottom);
+      right: anchor(right);
+    }
+  </style>
   <body>
-    <div>나는 Div-1이다</div>
-    <span>나는 span-1이다.</span>
-    <span>나는 span-2이다.</span>
-    <span>나는 span-3이다.</span>
-    <div>나는 Div-2이다.</div>
-    <button>나는 button이다.</button>
-    <input placeholder="나는 input이다." />
-    <select>
-      나는 select이다.
-    </select>
+    <div id="info" anchor="btn" popover>Extra</div>
+    <button id="btn" popovertarget="info" type="button" class="information">
+      i
+    </button>
   </body>
 </html>
+`

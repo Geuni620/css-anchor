@@ -4,14 +4,76 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
+    <script type="module">
+      if (!("anchorName" in document.documentElement.style)) {
+        import("https://unpkg.com/@oddbird/css-anchor-positioning");
+      }
+    </script>
   </head>
+  <style>
+    .layout {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+    }
+
+    .parent {
+      height: 300px;
+      width: 300px;
+      border: 1px solid black;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .child-1 {
+      background-color: red;
+      color: white;
+      border-radius: 5px;
+      padding: 10px;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      anchor-name: --contents;
+    }
+
+    .child-2 {
+      background-color: blue;
+      color: white;
+      border-radius: 5px;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: anchor(--contents, 50%);
+    }
+
+    .anchor {
+      anchor-name: --my-anchor;
+    }
+
+    .mover {
+      anchor-default: --my-anchor;
+      bottom: calc(anchor(top) + 5px);
+      left: calc(anchor(right) - 20px);
+    }
+  </style>
   <body>
-    <div class="parent">
-      Parent
-      <div class="child">Child #1</div>
-      <div class="child abs">Child #2</div>
-    </div>
+    <section id="modal" class="layout">
+      <div id="swiper" class="parent">
+        <div id="contents" class="child-1 anchor">자식 1</div>
+        <div anchor="my-anchor" class="child-2 mover">x</div>
+      </div>
+    </section>
   </body>
 </html>
+`
